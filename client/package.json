@@ -1,0 +1,18 @@
+{
+  "name": "kc-scaffold-client",
+  "version": "0.0.1",
+  "description": "client of the scaffold",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "client"
+  ],
+  "author": "weeast",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-redux": "^7.2.0"
+  }
+}
