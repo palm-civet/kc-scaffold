@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/weeast/kc-scaffold/issues"
   },
-  "homepage": "https://github.com/weeast/kc-scaffold#readme"
+  "homepage": "https://github.com/weeast/kc-scaffold#readme",
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
 }
