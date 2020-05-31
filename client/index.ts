@@ -5,3 +5,4 @@ interface IProps {
 
 }
 
+var a = 1
