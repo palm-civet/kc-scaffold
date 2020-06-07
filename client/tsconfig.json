@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "sourceMap": true,
+    "module": "ESNext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "baseUrl": ".",
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@platform/*": [ "./platform/*" ],
+      "@editor/*": [ "./editor/*" ],
+      "@common/*": [ "./common/*" ]
+    }
   },
-  "exclude": ["node_modules", "dist"],
-  "include": [
-    "editor/**/*.ts",
-    "editor/**/*.tsx",
-    "platform/**/*.ts",
-    "platform/**/*.tsx",
-    "index.ts"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

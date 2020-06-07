@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
-import App from './App'
 
-class Editor extends Component {
-  constructor(props) {
-    super(props)
-    this.store = createStore(reducer)
-  }
+import App from './app/App'
+import store from './app/store'
 
-  render() {
-    return (
-      <Provider store={this.store}>
-        <App />
-      </Provider>
-    )
-  }
+const Editor: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 }
+
+export default Editor
