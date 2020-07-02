@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Tree, Skeleton, Button } from 'antd'
 import { RootState } from '@editor/app/rootReducer'
 import { addTreeNode } from './TreeSlice'
-
+import { TreeDom } from './TreeNode'
+console.log(TreeDom)
 let treeCount = 1
 
 const TreeList: React.FC = () => {
@@ -21,8 +22,8 @@ const TreeList: React.FC = () => {
   };
 
   const insertNode = () => {
-    dispatch(addTreeNode({ 
-      target: '0-0', 
+    dispatch(addTreeNode({
+      target: '0-0',
       node: {
         title: 'leaf',
         key: `0-0-${++treeCount}`
@@ -33,6 +34,7 @@ const TreeList: React.FC = () => {
   return (
     <>
       <Button type='primary' onClick={insertNode}>插入子节点</Button>
+      <TreeDom value="33333"/>
       {
         loading ?
           <Skeleton /> :
@@ -46,6 +48,7 @@ const TreeList: React.FC = () => {
             treeData={root}
           />
       }
+
     </>
   )
 }
