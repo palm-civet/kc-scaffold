@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -8,7 +9,9 @@ const allWorkspace = [
   path.resolve(__dirname, '../common'),
   path.resolve(__dirname, '../editor'),
   path.resolve(__dirname, '../platform'),
+  path.resolve(__dirname, '../index.tsx')
 ]
+const excludePath = path.resolve(__dirname, '../node_modules')
 
 const babelLoader = {
   loader: 'babel-loader',
@@ -25,7 +28,7 @@ const babelLoader = {
 module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: './index.tsx',
-  devtool: devMode ? 'eval-cheap-module-source-map' : 'none',
+  devtool: devMode ? 'eval-source-map' : 'none',
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: devMode ? '[name].js' : '[name].[chunkhash].js',
@@ -36,7 +39,8 @@ module.exports = {
     rules: [
       {
         test: /.tsx?$/,
-        // include: allWorkspace,
+        include: allWorkspace,
+        // exclude: excludePath,
         use: [
           babelLoader,
           {
@@ -54,8 +58,9 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        exclude: excludePath,
         use: [
-          {
+          devMode ? 'style-loader' : {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: devMode,
@@ -68,11 +73,35 @@ module.exports = {
               importLoaders: 1
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer'),
+                require('postcss-import'),
+                require('postcss-url'),
+                require('postcss-preset-env')({
+                  browsers: 'last 2 versions',
+                  stage: 0,
+                }),
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /.css$/i,
+        include: excludePath,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader'
         ]
       },
       {
         test: /\.(png|jpg|gif)$/i,
+        exclude: excludePath,
         use: [
           {
             loader: 'url-loader',
@@ -105,6 +134,12 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../dist'),
+    index: 'index.html',
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/$/, to: '/dist/index.html' }
+      ]
+    },
     compress: true,
     hot: true,
     port: 9000

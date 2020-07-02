@@ -10,6 +10,7 @@ import loadable from '@loadable/component'
 
 import { Skeleton } from 'antd'
 
+import 'antd/dist/antd.css'
 import 'normalize.css'
 
 const Platform = loadable(() => import('@platform/index'), {

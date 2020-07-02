@@ -1,6 +1,6 @@
 import React from "react";
 
-export const treeData = [
+export const treeData = 
   {
     title: 'parent 1',
     key: '0-0',
@@ -27,5 +27,5 @@ export const treeData = [
         children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }],
       },
     ],
-  },
-];
+  }
+;
