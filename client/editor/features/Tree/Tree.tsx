@@ -4,8 +4,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Tree, Skeleton, Button } from 'antd'
 import { RootState } from '@editor/app/rootReducer'
 import { addTreeNode } from './TreeSlice'
-import { TreeDom } from './TreeNode'
-console.log(TreeDom)
+import { TreeManager } from './TreeManager'
+import { TreeNode } from './TreeNode'
+import { treeData } from './treeManager.mock'
+import { nodeData } from './treeNode.mock'
+
+const test = new TreeManager(nodeData);
+console.log(test.treeList)
+test.removeNode(test.treeList.children[0].id)
+// test.copyNode(test.treeList.children[0])
+
 let treeCount = 1
 
 const TreeList: React.FC = () => {
@@ -34,7 +42,6 @@ const TreeList: React.FC = () => {
   return (
     <>
       <Button type='primary' onClick={insertNode}>插入子节点</Button>
-      <TreeDom value="33333"/>
       {
         loading ?
           <Skeleton /> :
