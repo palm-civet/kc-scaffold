@@ -2,6 +2,7 @@ import React, { Children } from 'react'
 import { nodeData } from './treeNode.mock'
 import { v4 as uuidv4 } from 'uuid'
 import * as _ from 'lodash'
+import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 interface ITypeDescription<T = any> {
   type: string
@@ -24,6 +25,17 @@ export interface INodeData<T = any> {
   props: IPropsDescription<T>,
 }
 
+export interface IOutput<T = any> {
+  id: string = null
+  type: string = null,
+  value?: T,
+  name: string,
+  parent?: string,
+  children?: IOutput[],
+  methods: object,
+  props: object = {}
+}
+
 class TreeNode<T = any> {
   id: string = null
   name: string = null
@@ -35,13 +47,11 @@ class TreeNode<T = any> {
   parent: string
   childrenType: string[] = []
 
-  constructor(data: INodeData<T>) {
-    console.log(data)
-    this.gnerateNode(data)
+  constructor() {
+    // this.gnerateNode(data)
   }
 
   gnerateNode(data: INodeData<T>) {
-    console.log(data.name)
     this.id = this.gengerateId()
     this.name = data.name
     this.type = data.categroy
@@ -54,8 +64,21 @@ class TreeNode<T = any> {
     this.methods = this.initMethods(data.methods)
   }
 
+  gnerateRestoreNode(data: IOutput) {
+    this.id = data.id
+    this.name = data.name
+    this.type = data.type
+    this.value = data.value
+    this.parent = data.parent
+    this.props = data.props
+
+    data.children.map(node => {
+      this.gnerateRestoreNode(node)
+    })
+  }
+
   initProps(props: IPropsDescription<T>) {
-    const data = []
+    const data = {}
     if( _.isPlainObject(props)) {
       Object.keys(props).map(key => {
         data[key] = _.cloneDeep(props[key].default)
@@ -67,7 +90,9 @@ class TreeNode<T = any> {
   initChildren(children) {
     if (children && children.length) {
       return children.map(node => {
-        return new TreeNode<T>({...node, parent: this.id})
+        const newTree = new TreeNode()
+        newTree.gnerateNode({...node, parent: this.id})
+        return newTree
       })
     } else {
       return []
@@ -91,7 +116,7 @@ class TreeNode<T = any> {
     return false
   }
 
-  outputNode() {
+  outputNode(): IOutput {
     return {
       id: this.id,
       name: this.name,
@@ -102,10 +127,6 @@ class TreeNode<T = any> {
       parent: this.parent,
       children: this.children.map(node => node.outputNode())
     }
-  }
-
-  getValue (): T {
-    return this.value
   }
 
   gengerateId() { // UUID
@@ -132,6 +153,33 @@ class TreeNode<T = any> {
     const newNode = _.cloneDeep(this)
     this.changeId(newNode)
     return newNode
+  }
+
+  // 渲染
+  render(currentNode, key = 0) {
+    if(!currentNode) {
+      return null
+    }
+      const children = currentNode.children
+      const name = currentNode.name
+      const props = { ...currentNode.props, key: key }
+      console.log(currentNode)
+
+      return React.createElement(
+        name,
+        props,
+        children?.length ? children.map((element, key) => {
+          console.log('element', element)
+          if (typeof element === 'string') {
+            return element
+          }
+          else {
+            return this.render(element, key)
+          }
+        }) : null
+      )
+    // console.log(renderChildren(currentNode))
+    // return renderChildren(currentNode)
   }
 }
 

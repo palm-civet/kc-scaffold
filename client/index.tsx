@@ -9,7 +9,7 @@ import {
 import loadable from '@loadable/component'
 
 import { Skeleton } from 'antd'
-
+import ErrorBoundaries from './common/components/ErrorBoundaries'
 import 'antd/dist/antd.css'
 import 'normalize.css'
 
@@ -22,12 +22,14 @@ const Editor = loadable(() => import('@editor/index'), {
 })
 
 const App = () => (
-  <HashRouter>
-    <Switch>
-      <Route path='/platform'><Platform /></Route>
-      <Route path='/editor'><Editor /></Route>
-    </Switch>
-  </HashRouter>
+  <ErrorBoundaries>
+    <HashRouter>
+      <Switch>
+        <Route path='/platform'><Platform /></Route>
+        <Route path='/editor'><Editor /></Route>
+      </Switch>
+    </HashRouter>
+  </ErrorBoundaries>
 )
 
 const render =  () =>

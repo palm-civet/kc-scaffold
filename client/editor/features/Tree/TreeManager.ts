@@ -1,11 +1,13 @@
 import React from 'react'
 import * as _ from 'lodash'
-import { INodeData, TreeNode } from './treeNode'
+import { TreeNode, INodeData, IOutput } from './treeNode'
 
 enum ERROR_TYPE {
   REMOVE_PARENT_NOT_FOUND = '删除节点不存在父节点:',
   REMOVE_RELATION_NOT_CORRCT = '删除节点父子关系存在问题:',
-  REMOVE_CURRENT_NOT_FOUND = '当前删除节点不存在'
+  REMOVE_CURRENT_NOT_FOUND = '当前删除节点不存在',
+  INSERT_NODE_NOT_EXSIT = '当前插入节点不存在',
+  INIT_TREE_NO_DATA = '当前实例化节点树参数不存在'
 }
 
 function makeErrorMsg (type: ERROR_TYPE, extra?) {
@@ -13,15 +15,23 @@ function makeErrorMsg (type: ERROR_TYPE, extra?) {
 }
 
 class TreeManager<T> {
-  treeList: TreeNode<T> = null
+  treeListNode: TreeNode<T> = null
 
   constructor(treeData) {
     this.gnerateTreeNode(treeData)
   }
 
+  gnerateRestoreTree(restoreData: IOutput) {
+    this.treeListNode = new TreeNode()
+    this.treeListNode.gnerateRestoreNode(restoreData)
+  }
+
   gnerateTreeNode(treeData: INodeData<T>) {
-    if (!treeData) return
-    this.treeList = new TreeNode(treeData)
+    if (!treeData) {
+      throw new Error(makeErrorMsg(ERROR_TYPE.INIT_TREE_NO_DATA))
+    }
+    this.treeListNode = new TreeNode()
+    this.treeListNode.gnerateNode(treeData)
   }
 
   /**
@@ -30,7 +40,7 @@ class TreeManager<T> {
    */
   findNode(id): TreeNode {
     let node = null
-    this.traverseData(this.treeList, res => {
+    this.traverseData(this.treeListNode, res => {
       if (res.id === id) {
         node = res
       }
@@ -40,10 +50,11 @@ class TreeManager<T> {
 
   insertNode(id, node, index = 0) {
     const target = this.findNode(id)
-    if (target && target.checkChildType(node.type)) {
+    if(!target) {
+      throw new Error(makeErrorMsg(ERROR_TYPE.INSERT_NODE_NOT_EXSIT, `id=${id}`))
+    }
+    if (target.checkChildType(node.type)) {
       target.insertChildNode(index, node)
-    } else {
-      return false
     }
   }
 
@@ -83,30 +94,41 @@ class TreeManager<T> {
     recursionFun(data, callback)
   }
 
-  outputNode() {
-    if(this.treeList) {
-      return this.treeList.outputNode()
-    } else {
-      return {}
+  outputNode(): IOutput {
+    if(this.treeListNode) {
+      return this.treeListNode.outputNode()
     }
   }
 
-  renderTree (nodeData) {
-    const newProps: object = {}
-    Object.keys(nodeData.props).forEach(key => {
-      newProps[key] = nodeData.props[key].default
-    })
+  // renderTree (nodeData) {
+  //   const newProps: object = {}
+  //   Object.keys(nodeData.props).forEach(key => {
+  //     newProps[key] = nodeData.props[key].default
+  //   })
 
-    return React.createElement(
-      nodeData.type,
-      newProps,
-      nodeData.children ? [...nodeData.children]: null
-    )
+  //   return React.createElement(
+  //     nodeData.type,
+  //     newProps,
+  //     nodeData.children ? [...nodeData.children]: null
+  //   )
+  // }
+
+  renderTree() {
+    console.log(1)
+    // return React.createElement(
+    //   'input',
+    //   {value: 11},
+    //   null
+    // )
+    return this.treeListNode.render(this.treeListNode)
   }
 }
 export { TreeManager }
 
 
 
-// output 快照重新生产node tree
+/**
+ * output 快照重新生产 node tree,
+ * 快照只需存储组件类型，变量值，属性等，固有不变的属性不需要存储下来，通过具体组件参数就可以知道
+ */
 // props 属性丢失
