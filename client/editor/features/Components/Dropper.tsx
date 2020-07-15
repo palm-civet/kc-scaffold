@@ -5,8 +5,8 @@ import { useDrop } from 'react-dnd'
 function getStyle(backgroundColor: string): React.CSSProperties {
   return {
     border: '1px solid rgba(0,0,0,0.2)',
-    minHeight: '80px',
-    minWidth: '80px',
+    minHeight: '200px',
+    minWidth: '60%',
     color: 'white',
     backgroundColor,
     padding: '20px',
@@ -35,7 +35,6 @@ export const Dropper: React.FC<DroperProps> = ({ greedy, children }) => {
     accept: 'dragger',
     drop(item, monitor) {
       const didDrop = monitor.didDrop()
-      console.log("didDrop", didDrop)
       if (didDrop) {
         return
       }

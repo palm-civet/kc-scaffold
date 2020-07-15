@@ -14,12 +14,11 @@ const Drawer: React.FC = () => {
    }
 
   return (
-    <div>
-      <Box/>
+    <>
       <Dropper>
         <TreeDom/>
       </Dropper>
-    </div>
+    </>
   )
 }
 
