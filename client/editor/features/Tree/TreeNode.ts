@@ -163,13 +163,11 @@ class TreeNode<T = any> {
       const children = currentNode.children
       const name = currentNode.name
       const props = { ...currentNode.props, key: key }
-      console.log(currentNode)
 
       return React.createElement(
         name,
         props,
         children?.length ? children.map((element, key) => {
-          console.log('element', element)
           if (typeof element === 'string') {
             return element
           }

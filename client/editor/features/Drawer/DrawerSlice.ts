@@ -1,20 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TreeManager } from '../Tree/TreeManager'
-import { treeData } from '../Tree/treeManager.mock'
+// import { treeData } from '../Tree/treeManager.mock'
 
-const tree = new TreeManager(treeData);
-console.log(tree.outputNode())
+// const tree = new TreeManager(treeData);
 
 const initialState = {
   loading: false,
-  treeNode: tree
+
+  root: {
+    name: 'div',
+    children: []
+  }
 }
 
 const drawer = createSlice({
   name: 'drawer',
   initialState,
   reducers: {
-
+    initTreeManager() {
+      new TreeManager(treeData)
+    },
+    addTreeNode (state, action: PayloadAction<{node, target}>) {
+      // add node to target
+      const { node, target } = action.payload
+      const treeNode = state.root.children.find(item => item.key === target)
+      if (treeNode) treeNode.children.push(node)
+    }
   }
 })
 
