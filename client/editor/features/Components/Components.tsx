@@ -1,9 +1,10 @@
 import React from 'react'
 import { Space, Button, Card, TimePicker, Input, Switch } from "antd";
+import * as AntdConponents from "@editor/antd/index";
 import { SearchOutlined ,HomeOutlined} from '@ant-design/icons';
 import { Dragger } from './Dragger'
-// import { Box } from '../Components/TestBox'
 
+console.log(AntdConponents)
 export const GlobalComponent = {
   Space,
   Input,
@@ -69,6 +70,7 @@ const Components: React.FC = () => {
         componentName: component.name
       },
       index: index,
+      isAdd: true,
       children: <TagName {...component.props} />
     }
     return (

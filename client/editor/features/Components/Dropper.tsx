@@ -42,22 +42,6 @@ export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent}) => {
   const [hasDropped, setHasDropped] = useState(false)
   const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false)
 
-  const [{ isDragging, opacity }, drag, preview] = useDrag({
-    item: { type: 'dragger1' },
-    previewOptions: {},
-    options: {},
-    begin: (monitor: any) => { // Fired when a drag operation begins
-
-    },
-    end: (monitor: any) => { // When the dragging stops, endis called
-    },
-    collect: (monitor: any) => ({
-      isDragging: monitor.isDragging(),
-      opacity: monitor.isDragging() ? 0.4 : 1,
-      canDrag: monitor.canDrag()
-    }),
-  })
-
   const [{ isOver, isOverCurrent }, drop] = useDrop({
     accept: 'dragger',
     drop(item, monitor) {
@@ -83,10 +67,10 @@ export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent}) => {
     backgroundColor = 'green'
   }
 
-  drag(drop(ref))
+  drop(ref)
 
   return (
-    <div ref={preview} className='drop-wrap' style={getStyle(backgroundColor)}>
+    <div ref={ref} className='drop-wrap' style={getStyle(backgroundColor)}>
       Drop Target{text}
       <br />
       {hasDropped && <span>dropped {hasDroppedOnChild && ' on child'}</span>}
