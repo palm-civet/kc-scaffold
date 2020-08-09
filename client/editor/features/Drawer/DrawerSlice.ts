@@ -6,7 +6,7 @@ import { TreeManager } from '../Tree/TreeManager'
 
 const initialState = {
   loading: false,
-
+  treeNode: null,
   root: {
     name: 'div',
     children: []
@@ -17,8 +17,9 @@ const drawer = createSlice({
   name: 'drawer',
   initialState,
   reducers: {
-    initTreeManager() {
-      new TreeManager(treeData)
+    initTreeManager(state) {
+      console.log(state.root)
+      state.treeNode = new TreeManager(state.root)
     },
     addTreeNode (state, action: PayloadAction<{node, target}>) {
       // add node to target
@@ -29,8 +30,9 @@ const drawer = createSlice({
   }
 })
 
-// export const {
-//   addTreeNode
-// } = drawer.actions
+export const {
+  addTreeNode,
+  initTreeManager
+} = drawer.actions
 
 export default drawer.reducer

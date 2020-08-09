@@ -113,15 +113,9 @@ class TreeManager<T> {
   //   )
   // }
 
-  renderTree() {
-    console.log(1)
-    // return React.createElement(
-    //   'input',
-    //   {value: 11},
-    //   null
-    // )
-    return this.treeListNode.render(this.treeListNode)
-  }
+  // renderTree() {
+  //   return this.treeListNode.render(this.treeListNode)
+  // }
 }
 export { TreeManager }
 

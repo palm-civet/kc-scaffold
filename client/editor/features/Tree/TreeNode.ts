@@ -146,7 +146,10 @@ class TreeNode<T = any> {
   }
 
   insertChildNode(index, node) {
-    this.children.splice(index, 0, node)
+    const newTree = new TreeNode()
+    newTree.gnerateNode({...node, parent: this.id})
+    this.children.splice(index, 0, newTree)
+    console.log(this.children)
   }
 
   clone() {
@@ -156,29 +159,27 @@ class TreeNode<T = any> {
   }
 
   // 渲染
-  render(currentNode, key = 0) {
-    if(!currentNode) {
-      return null
-    }
-      const children = currentNode.children
-      const name = currentNode.name
-      const props = { ...currentNode.props, key: key }
+  // render(currentNode, key = 0) {
+  //   if(!currentNode) {
+  //     return null
+  //   }
+  //     const children = currentNode.children
+  //     const name = currentNode.name
+  //     const props = { ...currentNode.props, key: key }
 
-      return React.createElement(
-        name,
-        props,
-        children?.length ? children.map((element, key) => {
-          if (typeof element === 'string') {
-            return element
-          }
-          else {
-            return this.render(element, key)
-          }
-        }) : null
-      )
-    // console.log(renderChildren(currentNode))
-    // return renderChildren(currentNode)
-  }
+  //     return React.createElement(
+  //       name,
+  //       props,
+  //       children?.length ? children.map((element, key) => {
+  //         if (typeof element === 'string') {
+  //           return element
+  //         }
+  //         else {
+  //           return this.render(element, key)
+  //         }
+  //       }) : null
+  //     )
+  // }
 }
 
 export { TreeNode }
