@@ -77,8 +77,10 @@ const Drawer: React.FC = () => {
         key: key,
         isAdd: false
       }
+      const dropEvent1 = () => {
+      }
       return (
-        <Dragger {...DraggerProps}>
+        <Dragger {...DraggerProps} dropEvent={dropEvent1}>
           {
             React.createElement(
             CurrentComponent,

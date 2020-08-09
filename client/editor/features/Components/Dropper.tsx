@@ -34,10 +34,11 @@ export interface DustbinState {
 
 export interface DroperProps {
   greedy?: boolean,
-  dropEvent: (any) => void
+  dropEvent: (any) => void,
+  canDrop?: (any) => void,
 }
 
-export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent}) => {
+export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent, canDrop}) => {
   const ref = useRef<HTMLDivElement>(null)
   const [hasDropped, setHasDropped] = useState(false)
   const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false)
@@ -52,6 +53,9 @@ export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent}) => {
       }
       setHasDropped(true)
       setHasDroppedOnChild(didDrop)
+    },
+    canDrop(){
+      return true
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),

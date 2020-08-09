@@ -44,16 +44,30 @@ export const Dragger: React.FC<DraggerProps> = ({ id, acceptItem, index, isAdd, 
   })
 
   // drop
-  const [,drop] = useDrop({
+  const [{isOver, isOverCurrent}, drop] = useDrop({
     accept: acceptItem.type,
+    canDrop(){
+      return true
+    },
+    drop(item, monitor) {
+      dropEvent(item)
+      const didDrop = monitor.didDrop()
+      if (didDrop) {
+        return
+      }
+    },
     hover: () => {
 
-    }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      isOverCurrent: monitor.isOver({ shallow: true }),
+    }),
   })
   drag(drop(ref))
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={isOverCurrent ? {backgroundColor:  'green'} : {}}>
       {children}
     </div>
   )
