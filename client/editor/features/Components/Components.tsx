@@ -4,7 +4,7 @@ import { SearchOutlined ,HomeOutlined} from '@ant-design/icons';
 import { Dragger } from './Dragger'
 // import { Box } from '../Components/TestBox'
 
-const GlobalComponent = {
+export const GlobalComponent = {
   Space,
   Input,
   Button,
@@ -14,7 +14,7 @@ const GlobalComponent = {
   Switch
 }
 
-const components = [{
+export const components = [{
   name: 'HomeOutlined',
   props: {
     size:'large',
@@ -65,13 +65,14 @@ const Components: React.FC = () => {
     const TagName = GlobalComponent[component.name]
     let props = {
       acceptItem: {
-        type: component.name
+        type: 'dragger', // 要改不 component.name
+        componentName: component.name
       },
       index: index,
       children: <TagName {...component.props} />
     }
     return (
-      <div style={componentStyle}>
+      <div style={componentStyle} key={component.name}>
       <Dragger {...props}></Dragger>
       </div>
     )
