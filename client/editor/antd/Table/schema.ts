@@ -148,7 +148,7 @@ export default {
 		}
 	},
 	"name": "Table",
-	"categroy": "复合组件",
+	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false
 }

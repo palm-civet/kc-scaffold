@@ -21,7 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Space",
-	"categroy": "容器组件",
+	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false
 }

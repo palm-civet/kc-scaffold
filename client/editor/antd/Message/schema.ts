@@ -22,7 +22,7 @@ export default {
 		}
 	},
 	"name": "Message",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": true
 }

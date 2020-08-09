@@ -40,7 +40,7 @@ export default {
 		}
 	},
 	"name": "Tag",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

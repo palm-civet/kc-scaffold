@@ -94,7 +94,7 @@ export default {
 		}
 	},
 	"name": "Calendar",
-	"categroy": "复合组件",
+	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false
 }

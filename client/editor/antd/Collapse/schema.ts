@@ -58,7 +58,7 @@ export default {
 		}
 	},
 	"name": "Collapse",
-	"categroy": "复合组件",
+	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false
 }

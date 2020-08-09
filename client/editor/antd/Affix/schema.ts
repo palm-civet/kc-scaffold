@@ -28,7 +28,7 @@ export default {
 		}
 	},
 	"name": "Affix",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

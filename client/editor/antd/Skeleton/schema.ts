@@ -39,7 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Skeleton",
-	"categroy": "文本组件",
+	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false
 }

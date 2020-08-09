@@ -94,7 +94,7 @@ export default {
 		}
 	},
 	"name": "Notification",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": true
 }

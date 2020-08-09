@@ -57,7 +57,7 @@ export default {
 	},
 	"events": {},
 	"name": "Statistic",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

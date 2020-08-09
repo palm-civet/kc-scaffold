@@ -178,7 +178,7 @@ export default {
 		}
 	},
 	"name": "TimePicker",
-	"categroy": "输出组件",
+	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false
 }

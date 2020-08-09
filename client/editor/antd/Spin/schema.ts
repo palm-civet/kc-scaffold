@@ -39,7 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Spin",
-	"categroy": "文本组件",
+	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false
 }

@@ -27,7 +27,7 @@ export default {
 	},
 	"events": {},
 	"name": "Timeline",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

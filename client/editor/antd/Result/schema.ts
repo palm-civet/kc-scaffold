@@ -33,7 +33,7 @@ export default {
 	},
 	"events": {},
 	"name": "Result",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

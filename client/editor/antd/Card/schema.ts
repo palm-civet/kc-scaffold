@@ -106,7 +106,7 @@ export default {
 		}
 	},
 	"name": "Card",
-	"categroy": "容器组件",
+	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false
 }

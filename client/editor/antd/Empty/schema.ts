@@ -21,7 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Empty",
-	"categroy": "文本组件",
+	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false
 }

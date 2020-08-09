@@ -82,7 +82,7 @@ export default {
 		}
 	},
 	"name": "Button",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }
