@@ -15,6 +15,7 @@ interface DraggerProps {
 
 interface AcceptItem {
   type: string
+  componentName: string
 }
 /**
  * useDrag 返回一个数组，

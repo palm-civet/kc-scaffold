@@ -4,27 +4,18 @@ import { RootState } from '@editor/app/rootReducer'
 import { Dropper } from '../Components/Dropper'
 import { Box } from '../Components/TestBox'
 import { TreeManager } from '../Tree/TreeManager'
-import { GlobalComponent } from '../Components/Components'
 import { cloneDeep } from 'lodash'
 import { useDrag, useDrop } from 'react-dnd'
 import { Dragger } from '../Components/Dragger'
+import * as GlobalComponent from '@editor/antd'
 
-const data = {
-  name: 'span',
+const treeManager = new TreeManager( {
+  name: 'Layout',
+  type: 'Layout',
   children: [],
-  props: { // 组件支持的属性
-		className: {
-    	type: "string", // 属性类型
-      default: "myClass", // 默认值
-      desc: "属性描述"
-    },
-  },
-  childrenType: [
-    "all"
-  ],// 支持的子元素类型
-}
-
-const treeManager = new TreeManager(data)
+  props: { 
+  }
+})
 
 const Drawer: React.FC = () => {
   const [treeList, setTreeList] = useState(treeManager.outputNode())
