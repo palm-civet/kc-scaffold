@@ -1,12 +1,26 @@
 import React, {useRef} from 'react'
 import { useDrag, useDrop } from 'react-dnd'
+import { useTreeManager } from '@editor/features/Tree/TreeManager'
+import { containable, ComponentTypes } from '@editor/antd/helper'
 
 export type WrapperOptions = {
   name: string
 }
 
+export interface IWrapperProps {
+  name: string
+  categroy: ComponentTypes
+}
+
+export interface IDragItem {
+  name: string
+  categroy: ComponentTypes,
+  type: string
+}
+
 export function withWrapper (Component, options: WrapperOptions): React.FC {
-  const Wrapper: React.FC = props => {
+  const Wrapper: React.FC<IWrapperProps> = props => {
+    const treeManager = useTreeManager()
     const ref = useRef(null)
 
     const [collectedProps, drag, preview] = useDrag({
@@ -36,14 +50,17 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
     const [collectedDropProps, drop] = useDrop({
       accept: '', // item type
       options: {},
-      drop: (item, monitor) => {
+      drop: (item: any, monitor: any) => {
 
       },
-      hover: (item, monitor) => {
+      hover: (item: IDragItem, monitor: any) => {
+        // TODO: 添加元素，交换顺序
+        const { categroy, name } = props;
 
       },
-      canDrop: () =>{
-        return true
+      canDrop: (item: IDragItem) =>{
+        const { categroy, name } = props;
+        return containable({ categroy , name }, { categroy: item.categroy , name: item.name })
       },
       collect: (monitor) => ({
         isOver: monitor.isOver(),

@@ -13,7 +13,7 @@ const treeManager = new TreeManager( {
   name: 'Layout',
   type: 'Layout',
   children: [],
-  props: { 
+  props: {
   }
 })
 
@@ -84,7 +84,6 @@ const Drawer: React.FC = () => {
   }
 
   return (
-
       <Dropper dropEvent={dropEvent}>
         {renderFun(treeList)}
       </Dropper>

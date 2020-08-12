@@ -1,5 +1,5 @@
 import { ComponentTypes, IComponentSchema } from "./types"
-
+export * from "./types"
 interface INameType {
   name: string
   categroy: string
