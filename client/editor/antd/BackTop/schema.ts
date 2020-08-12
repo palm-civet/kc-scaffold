@@ -28,7 +28,7 @@ export default {
 		}
 	},
 	"name": "BackTop",
-	"categroy": "全局元组件",
+	"categroy": "Global Meta",
 	"deprecated": false,
 	"degrade": false
 }

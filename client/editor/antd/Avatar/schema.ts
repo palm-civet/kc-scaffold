@@ -52,7 +52,7 @@ export default {
 		}
 	},
 	"name": "Avatar",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

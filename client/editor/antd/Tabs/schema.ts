@@ -112,7 +112,7 @@ export default {
 		}
 	},
 	"name": "Tabs",
-	"categroy": "页面组件",
+	"categroy": "Page",
 	"deprecated": false,
 	"degrade": false
 }

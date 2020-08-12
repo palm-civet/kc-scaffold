@@ -250,7 +250,7 @@ export default {
 		}
 	},
 	"name": "TreeSelect",
-	"categroy": "输出组件",
+	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false
 }

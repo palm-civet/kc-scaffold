@@ -57,7 +57,7 @@ export default {
 	},
 	"events": {},
 	"name": "Badge",
-	"categroy": "装饰组件",
+	"categroy": "Decoration",
 	"deprecated": false,
 	"degrade": false
 }

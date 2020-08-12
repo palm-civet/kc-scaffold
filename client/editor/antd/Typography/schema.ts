@@ -69,7 +69,7 @@ export default {
 	},
 	"events": {},
 	"name": "Typography",
-	"categroy": "文本组件",
+	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false
 }

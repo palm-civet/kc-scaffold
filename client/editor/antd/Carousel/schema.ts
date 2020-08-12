@@ -45,7 +45,7 @@ export default {
 	},
 	"events": {},
 	"name": "Carousel",
-	"categroy": "元组件",
+	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
 }

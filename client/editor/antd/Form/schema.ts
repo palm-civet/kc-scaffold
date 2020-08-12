@@ -124,7 +124,7 @@ export default {
 		}
 	},
 	"name": "Form",
-	"categroy": "复合组件",
+	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false
 }

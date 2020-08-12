@@ -33,7 +33,7 @@ export default {
 	},
 	"events": {},
 	"name": "Radio",
-	"categroy": "输出组件",
+	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false
 }

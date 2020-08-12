@@ -81,7 +81,7 @@ export default {
 	},
 	"events": {},
 	"name": "List",
-	"categroy": "复合组件",
+	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": true
 }
