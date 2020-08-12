@@ -10,7 +10,8 @@ interface DraggerProps {
   index?: number,
   acceptItem: AcceptItem,
   dropEvent?: (any) => void,
-  isAdd?: boolean
+  isAdd?: boolean,
+  moveCard?: (dragIndex, hoverIndex) => void,
 }
 
 interface AcceptItem {
@@ -24,7 +25,7 @@ interface AcceptItem {
  * 参数：item,用于标识当前拖动元素，drop与drap之间的唯一标识，此处最好不要使用太复杂的引用对象
  * item.type 必须是字符串或者symbol类型
  */
-export const Dragger: React.FC<DraggerProps> = ({ id, acceptItem, index, isAdd, children, dropEvent }) => {
+export const Dragger: React.FC<DraggerProps> = ({ id, acceptItem, index, isAdd, children, dropEvent, moveCard }) => {
   const ref = useRef<HTMLDivElement>(null)
   // drag
   const [{ isDragging, opacity }, drag, preview] = useDrag({
@@ -50,14 +51,16 @@ export const Dragger: React.FC<DraggerProps> = ({ id, acceptItem, index, isAdd, 
       return true
     },
     drop(item, monitor) {
-      dropEvent(item)
+      // dropEvent(item)
       const didDrop = monitor.didDrop()
       if (didDrop) {
         return
       }
     },
-    hover: () => {
-
+    hover: (item, monitor) => {
+      console.log(id, item.id)
+      const clientOffset = monitor.getClientOffset();
+      // moveCard(dragIndex, hoverIndex)
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as _ from 'lodash'
 import { TreeNode, INodeData, IOutput } from './treeNode'
 
@@ -118,6 +118,13 @@ class TreeManager<T> {
   // }
 }
 export { TreeManager }
+
+export const manager = new TreeManager({ name: 'Layout', categroy: 'Layout', children: [] })
+export const managerContext = React.createContext(manager)
+
+export function useTreeManager () {
+  return useContext(managerContext)
+}
 
 
 

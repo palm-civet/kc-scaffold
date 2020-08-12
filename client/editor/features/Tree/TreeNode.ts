@@ -157,29 +157,6 @@ class TreeNode<T = any> {
     this.changeId(newNode)
     return newNode
   }
-
-  // 渲染
-  // render(currentNode, key = 0) {
-  //   if(!currentNode) {
-  //     return null
-  //   }
-  //     const children = currentNode.children
-  //     const name = currentNode.name
-  //     const props = { ...currentNode.props, key: key }
-
-  //     return React.createElement(
-  //       name,
-  //       props,
-  //       children?.length ? children.map((element, key) => {
-  //         if (typeof element === 'string') {
-  //           return element
-  //         }
-  //         else {
-  //           return this.render(element, key)
-  //         }
-  //       }) : null
-  //     )
-  // }
 }
 
 export { TreeNode }
