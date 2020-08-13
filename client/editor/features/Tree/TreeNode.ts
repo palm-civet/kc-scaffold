@@ -142,7 +142,7 @@ class TreeNode<T = any> {
   }
 
   checkChildType(type) {
-    return this.childrenType.indexOf('all') > -1 ||  (type in this.childrenType)
+    return true || this.childrenType.indexOf('all') > -1 ||  (type in this.childrenType)
   }
 
   insertChildNode(index, node) {

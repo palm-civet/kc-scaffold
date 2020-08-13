@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { useTreeManager } from '@editor/features/Tree/TreeManager'
 import { containable, ComponentTypes } from '@editor/antd/helper'
@@ -9,23 +9,33 @@ export type WrapperOptions = {
 
 export interface IWrapperProps {
   name: string
-  categroy: ComponentTypes
+  categroy: ComponentTypes,
+  id?: string
 }
 
 export interface IDragItem {
   name: string
   categroy: ComponentTypes,
-  type: string
+  type: string,
+  id?: string
 }
 
 export function withWrapper (Component, options: WrapperOptions): React.FC {
+
   const Wrapper: React.FC<IWrapperProps> = props => {
     const treeManager = useTreeManager()
-    const ref = useRef(null)
+    const [element, setElement] = useState<HTMLElement>()
 
-    const [collectedProps, drag, preview] = useDrag({
+    useEffect(() => {
+      const dom = document.getElementById(props.id)
+      setElement(dom)
+      drag(drop(dom))
+    }, [])
+    const [{}, drag, preview] = useDrag({
       item: {
-        type: '', // item type
+        type: 'dragger', // item type
+        isUpdate: true,
+        ...props
       },
       previewOptions: {},
       options: {},
@@ -47,8 +57,8 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
       }),
     })
 
-    const [collectedDropProps, drop] = useDrop({
-      accept: '', // item type
+    const [{ canDrop }, drop] = useDrop({
+      accept: 'dragger', // item type
       options: {},
       drop: (item: any, monitor: any) => {
 
@@ -56,6 +66,26 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
       hover: (item: IDragItem, monitor: any) => {
         // TODO: 添加元素，交换顺序
         const { categroy, name } = props;
+        const dragId = item.id
+        const hoverId = props.id
+        if (dragId === hoverId) {
+          return
+        }
+        const hoverBoundingRect = element?.getBoundingClientRect()
+        const hoverBoxHeight = hoverBoundingRect.bottom - hoverBoundingRect.top
+        const hoverBoxWidth = hoverBoundingRect.right - hoverBoundingRect.left
+        const clientOffset = monitor.getClientOffset()
+        const getInitialClientOffset = monitor.getInitialClientOffset()
+
+        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+        const hoverClientY = clientOffset.y - hoverBoundingRect.top
+
+
+        console.log(clientOffset, getInitialClientOffset)
+        moveComponent(dragId, hoverId)
+
+
+        console.log("hoverBoundingRect", hoverBoundingRect)
 
       },
       canDrop: (item: IDragItem) =>{
@@ -65,12 +95,26 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
       collect: (monitor) => ({
         isOver: monitor.isOver(),
         isOverCurrent: monitor.isOver({ shallow: true }),
+        canDrop: monitor.canDrop(),
       }),
     })
 
-    drag(drop(ref))
+    const moveComponent = (dragId, hoverId) => {
+      console.log(treeManager)
+      treeManager.findNode(dragId)
+    }
 
-    return <Component ref={ref} {...props} />
+    return <Component id={props.id} >{props.children}</Component>
+    // props.categroy === ComponentTypes.Output || props.categroy === ComponentTypes.Meta ? (
+    //   <div ref={ref} className="drag" style={{ border: '1px solid red', display: 'inline-block' }} >
+    //     <Component ref={refv} id={props.id}  />
+    //   </div>
+    //   ) : (
+    //     <Component id={props.id} style={{position: 'relative'}}>
+    //       <div ref={ref} className="drag" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, zIndex: 11, border: '1px solid red' }} ></div>
+    //       {props.children}
+    //     </Component>
+    //   )
   }
   return Wrapper
 }

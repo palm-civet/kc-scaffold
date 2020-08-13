@@ -22,7 +22,7 @@ const Components: React.FC = () => {
               dataSource={schemas[categroy]}
               renderItem={(item: IComponentSchema) => (
                 <List.Item>
-                  <Dragger acceptItem={{ type: 'dragger', componentName: item.name }}>
+                  <Dragger acceptItem={{ type: 'dragger', componentName: item.name, categroy: item.categroy }}>
                     {item.name}
                   </Dragger>
                 </List.Item>

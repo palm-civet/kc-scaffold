@@ -17,6 +17,7 @@ interface DraggerProps {
 interface AcceptItem {
   type: string
   componentName: string
+  categroy: string
 }
 /**
  * useDrag 返回一个数组，
@@ -59,7 +60,6 @@ export const Dragger: React.FC<DraggerProps> = ({ id, acceptItem, index, isAdd, 
       }
     },
     hover: (item, monitor) => {
-      console.log(id, item.id)
       const clientOffset = monitor.getClientOffset();
       // moveCard(dragIndex, hoverIndex)
     },
