@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useCallback, useMemo } from 'react'
 import * as _ from 'lodash'
 import { TreeNode, INodeData, IOutput } from './treeNode'
 import { IconType } from 'antd/lib/notification'
@@ -55,24 +55,16 @@ class TreeManager<T> {
     }
   }
 
-  private get treeList(): DataNode {
-    const data: DataNode = { key: null }
-    this.traverseBack(this.treeListNode, data, (node: TreeNode, prev: any) => {
-      prev.key = node.id
-      prev.title = node.name
-      prev.children = prev.children || []
-      return prev.children
-    })
-    return data
-  }
-
-  public observableTreeList(): [DataNode, () => void] {
-    const [treeList, setTreeList] = useState(this.treeList)
-    const observeTreeList = () => {
-      setTreeList(this.treeList)
-    }
-    this.addDeps(observeTreeList)
-    return [treeList, () => this.removeDep(observeTreeList)]
+  public observeTree<T>(transfer: (out: T, node: TreeNode) => T | T[]) {
+    const getter = useCallback(() => {
+      const res: T = {} as T
+      this.traverseBack(this.treeListNode, res, transfer)
+      return res
+    }, [transfer])
+    const [data, setData] = useState(getter())
+    const observer = () => setData(getter())
+    this.addDeps(observer)
+    return [data, () => this.removeDep(observer)]
   }
 
   generateRestoreTree(restoreData: IOutput) {
@@ -154,13 +146,13 @@ class TreeManager<T> {
       if (Array.isArray(data)) {
         data.forEach((node, index) => {
           prev[index] = {}
-          const res = callback(node, prev[index])
+          const res = callback(prev[index], node)
           if (node.children && node.children.length) {
             recursionFun(node.children, res, callback)
           }
         })
       } else if (data instanceof Object) {
-        const res = callback(data, prev)
+        const res = callback(prev, data)
         if (data.children && data.children.length) {
           recursionFun(data.children, res, callback)
         }

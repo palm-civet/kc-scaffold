@@ -66,3 +66,17 @@ export function sortCategroyName (cateA, cateB) {
   const indexB = CATEGROY_LIST.indexOf(cateB) === -1 ? 10 : CATEGROY_LIST.indexOf(cateB)
   return indexA < indexB ? -1 : 1 
 }
+
+export enum AVAILABLE_PROPS {
+  STRING = 'string',
+  NUMBER = 'number',
+  BOOLEAN = 'boolean'
+}
+const AVALIABLE_PROPS_LIST = [
+  AVAILABLE_PROPS.STRING,
+  AVAILABLE_PROPS.NUMBER,
+  AVAILABLE_PROPS.BOOLEAN
+]
+export function availablePropFilter (type: string) {
+  return AVALIABLE_PROPS_LIST.some(prop => type.includes(prop))
+}
