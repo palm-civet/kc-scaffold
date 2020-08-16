@@ -6,7 +6,12 @@ import { useTreeManager } from './TreeManager'
 
 const TreeList: React.FC = () => {
   const treeManager = useTreeManager()
-  const [treeList, removeDeps] = treeManager.observableTreeList()
+  const [treeList, removeDeps] = treeManager.observeTree((out: any, node) => {
+    out.key = node.id
+    out.title = node.name
+    out.children = out.children || []
+    return out.children
+  })
   useEffect(() => removeDeps, [])
 
   return (
