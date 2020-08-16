@@ -69,6 +69,7 @@ export default {
 	},
 	"events": {},
 	"name": "Typography",
+	"title": "排版",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

@@ -1,0 +1,15 @@
+.container {
+  background-color: 'white';
+  height: '100%';
+}
+
+.categroy {
+  
+}
+
+.component {
+  >span {
+    font-size: 14px;
+    color: rgba(0,0,0,.85);
+  }
+}

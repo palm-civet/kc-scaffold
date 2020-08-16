@@ -52,6 +52,7 @@ export default {
 		}
 	},
 	"name": "Avatar",
+	"title": "头像",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

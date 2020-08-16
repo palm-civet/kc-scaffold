@@ -81,6 +81,7 @@ export default {
 	},
 	"events": {},
 	"name": "List",
+	"title": "列表",
 	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": true

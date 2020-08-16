@@ -94,6 +94,7 @@ export default {
 		}
 	},
 	"name": "Calendar",
+	"title": "日历",
 	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false

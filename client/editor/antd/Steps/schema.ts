@@ -70,6 +70,7 @@ export default {
 		}
 	},
 	"name": "Steps",
+	"title": "步骤条",
 	"categroy": "Page",
 	"deprecated": false,
 	"degrade": false

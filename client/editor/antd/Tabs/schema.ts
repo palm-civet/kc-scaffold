@@ -112,6 +112,7 @@ export default {
 		}
 	},
 	"name": "Tabs",
+	"title": "标签页",
 	"categroy": "Page",
 	"deprecated": false,
 	"degrade": false

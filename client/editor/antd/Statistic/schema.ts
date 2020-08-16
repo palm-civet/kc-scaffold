@@ -57,6 +57,7 @@ export default {
 	},
 	"events": {},
 	"name": "Statistic",
+	"title": "统计数值",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

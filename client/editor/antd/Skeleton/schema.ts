@@ -39,6 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Skeleton",
+	"title": "骨架屏",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

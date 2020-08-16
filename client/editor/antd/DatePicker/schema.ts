@@ -136,6 +136,7 @@ export default {
 		}
 	},
 	"name": "DatePicker",
+	"title": "日期选择框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

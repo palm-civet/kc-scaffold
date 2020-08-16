@@ -148,6 +148,7 @@ export default {
 		}
 	},
 	"name": "Table",
+	"title": "表格",
 	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false

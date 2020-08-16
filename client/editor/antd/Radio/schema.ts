@@ -33,6 +33,7 @@ export default {
 	},
 	"events": {},
 	"name": "Radio",
+	"title": "单选框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

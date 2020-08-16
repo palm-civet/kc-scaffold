@@ -27,6 +27,7 @@ export default {
 	},
 	"events": {},
 	"name": "Timeline",
+	"title": "时间轴",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

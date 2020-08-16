@@ -57,6 +57,7 @@ export default {
 	},
 	"events": {},
 	"name": "Badge",
+	"title": "徽标数",
 	"categroy": "Decoration",
 	"deprecated": false,
 	"degrade": false

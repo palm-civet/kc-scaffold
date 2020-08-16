@@ -124,6 +124,7 @@ export default {
 		}
 	},
 	"name": "Transfer",
+	"title": "穿梭框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

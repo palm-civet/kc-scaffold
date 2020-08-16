@@ -27,6 +27,7 @@ export default {
 	},
 	"events": {},
 	"name": "Breadcrumb",
+	"title": "面包屑",
 	"deprecated": true,
 	"degrade": false
 }

@@ -160,6 +160,7 @@ export default {
 		}
 	},
 	"name": "Upload",
+	"title": "上传",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

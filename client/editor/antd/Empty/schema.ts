@@ -21,6 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Empty",
+	"title": "空状态",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

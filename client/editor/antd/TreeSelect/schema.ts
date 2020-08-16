@@ -250,6 +250,7 @@ export default {
 		}
 	},
 	"name": "TreeSelect",
+	"title": "树选择",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

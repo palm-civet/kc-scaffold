@@ -22,6 +22,7 @@ export default {
 		}
 	},
 	"name": "Message",
+	"title": "全局提示",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": true

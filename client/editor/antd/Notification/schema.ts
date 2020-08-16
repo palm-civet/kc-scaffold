@@ -94,6 +94,7 @@ export default {
 		}
 	},
 	"name": "Notification",
+	"title": "通知提醒框",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": true

@@ -15,6 +15,7 @@ export default {
 	},
 	"events": {},
 	"name": "Popover",
+	"title": "气泡卡片",
 	"deprecated": true,
 	"degrade": false
 }

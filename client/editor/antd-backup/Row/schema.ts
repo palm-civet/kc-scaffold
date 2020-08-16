@@ -21,6 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Row",
+	"title": "行容器",
 	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false

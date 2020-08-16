@@ -100,6 +100,7 @@ export default {
 		}
 	},
 	"name": "Rate",
+	"title": "评分",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

@@ -9,6 +9,7 @@ export default {
 	},
 	"events": {},
 	"name": "Tooltip",
+	"title": "文字提示",
 	"deprecated": false,
 	"degrade": false
 }

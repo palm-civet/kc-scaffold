@@ -39,6 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Spin",
+	"title": "加载中",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

@@ -124,6 +124,7 @@ export default {
 		}
 	},
 	"name": "Menu",
+	"title": "导航菜单",
 	"deprecated": true,
 	"degrade": false
 }

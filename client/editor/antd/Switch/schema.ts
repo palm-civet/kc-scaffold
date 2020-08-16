@@ -70,6 +70,7 @@ export default {
 		}
 	},
 	"name": "Switch",
+	"title": "开关",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

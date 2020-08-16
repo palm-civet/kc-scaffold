@@ -118,6 +118,7 @@ export default {
 		}
 	},
 	"name": "Slider",
+	"title": "滑动输入条",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

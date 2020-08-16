@@ -40,6 +40,7 @@ export default {
 		}
 	},
 	"name": "Tag",
+	"title": "标签",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

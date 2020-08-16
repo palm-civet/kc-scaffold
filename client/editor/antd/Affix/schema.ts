@@ -28,6 +28,7 @@ export default {
 		}
 	},
 	"name": "Affix",
+	"title": "固钉",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

@@ -28,6 +28,7 @@ export default {
 		}
 	},
 	"name": "BackTop",
+	"title": "回到顶部",
 	"categroy": "Global Meta",
 	"deprecated": false,
 	"degrade": false

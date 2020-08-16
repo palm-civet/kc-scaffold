@@ -88,6 +88,7 @@ export default {
 		}
 	},
 	"name": "InputNumber",
+	"title": "数字输入框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

@@ -82,6 +82,7 @@ export default {
 		}
 	},
 	"name": "Button",
+	"title": "按钮",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false
