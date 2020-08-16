@@ -50,3 +50,19 @@ const CATEGROY_NAME = {
 export function getCategroyName (categroy: string) {
   return CATEGROY_NAME[categroy] || '未分类'
 }
+const CATEGROY_LIST = [
+  ComponentTypes.Layout,
+  ComponentTypes.Container,
+  ComponentTypes.Composite,
+  ComponentTypes.Meta,
+  ComponentTypes.Output,
+  ComponentTypes.Text,
+  ComponentTypes.Page,
+  ComponentTypes.GlobalMeta,
+  ComponentTypes.Decoration,
+]
+export function sortCategroyName (cateA, cateB) {
+  const indexA = CATEGROY_LIST.indexOf(cateA) === -1 ? 10 : CATEGROY_LIST.indexOf(cateA)
+  const indexB = CATEGROY_LIST.indexOf(cateB) === -1 ? 10 : CATEGROY_LIST.indexOf(cateB)
+  return indexA < indexB ? -1 : 1 
+}
