@@ -54,7 +54,7 @@ class TreeManager<T> {
       this.deps.splice(index, 1)
     }
   }
-  
+
   private get treeList(): DataNode {
     const data: DataNode = { key: null }
     this.traverseBack(this.treeListNode, data, (node: TreeNode, prev: any) => {

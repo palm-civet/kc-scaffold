@@ -18,12 +18,7 @@ function getStyle(backgroundColor: string): React.CSSProperties {
     minWidth: '60%',
     color: 'white',
     backgroundColor,
-    padding: '20px',
-    paddingTop: '10px',
-    margin: '10px',
     textAlign: 'center',
-    float: 'left',
-    fontSize: '10px',
   }
 }
 
@@ -75,10 +70,7 @@ export const Dropper: React.FC<DroperProps> = ({ children,  dropEvent, canDrop})
 
   return (
     <div ref={ref} className='drop-wrap' style={getStyle(backgroundColor)}>
-      Drop Target{text}
-      <br />
-      {hasDropped && <span>dropped {hasDroppedOnChild && ' on child'}</span>}
-      <div>{children}</div>
+      {children}
     </div>
   )
 }

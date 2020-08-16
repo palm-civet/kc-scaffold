@@ -22,6 +22,11 @@ const Drawer: React.FC = () => {
     setTreeList(treeManager.outputNode())
   }
 
+  const moveComponent = (dragId, hoverId) => {
+    setTreeList(treeManager.outputNode())
+
+  }
+
   // 渲染
   const renderFun = (currentNode, key = 0) => {
     if(!currentNode) {
@@ -48,7 +53,7 @@ const Drawer: React.FC = () => {
       key: key
     }
     return (
-      <CurrentComponent {...draggerProps}>{children}</CurrentComponent>
+      <CurrentComponent {...draggerProps} moveComponent={moveComponent}>{children}</CurrentComponent>
     )
   }
 
