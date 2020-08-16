@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import * as _ from 'lodash'
 import { TreeNode, INodeData, IOutput } from './treeNode'
+import { IconType } from 'antd/lib/notification'
 
 enum ERROR_TYPE {
   REMOVE_PARENT_NOT_FOUND = '删除节点不存在父节点:',
@@ -8,6 +9,22 @@ enum ERROR_TYPE {
   REMOVE_CURRENT_NOT_FOUND = '当前删除节点不存在',
   INSERT_NODE_NOT_EXSIT = '当前插入节点不存在',
   INIT_TREE_NO_DATA = '当前实例化节点树参数不存在'
+}
+
+interface DataNode {
+  checkable?: boolean;
+  children?: DataNode[];
+  disabled?: boolean;
+  disableCheckbox?: boolean;
+  icon?: IconType;
+  isLeaf?: boolean;
+  key: string | number;
+  title?: React.ReactNode;
+  selectable?: boolean;
+  switcherIcon?: IconType;
+  /** Set style of TreeNode. This is not recommend if you don't have any force requirement */
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 function makeErrorMsg (type: ERROR_TYPE, extra?) {
@@ -18,15 +35,52 @@ class TreeManager<T> {
   treeListNode: TreeNode<T> = null
 
   constructor(treeData) {
-    this.gnerateTreeNode(treeData)
+    this.generateTreeNode(treeData)
   }
 
-  gnerateRestoreTree(restoreData: IOutput) {
+  deps: Function[] = []
+
+  private addDeps(callback) {
+    this.deps.push(callback)
+  }
+
+  private callDeps() {
+    this.deps.forEach(dep => dep())
+  }
+
+  private removeDep(dep) {
+    const index = this.deps.indexOf(dep)
+    if (index !== -1) {
+      this.deps.splice(index, 1)
+    }
+  }
+  
+  private get treeList(): DataNode {
+    const data: DataNode = { key: null }
+    this.traverseBack(this.treeListNode, data, (node: TreeNode, prev: any) => {
+      prev.key = node.id
+      prev.title = node.name
+      prev.children = prev.children || []
+      return prev.children
+    })
+    return data
+  }
+
+  public observableTreeList(): [DataNode, () => void] {
+    const [treeList, setTreeList] = useState(this.treeList)
+    const observeTreeList = () => {
+      setTreeList(this.treeList)
+    }
+    this.addDeps(observeTreeList)
+    return [treeList, () => this.removeDep(observeTreeList)]
+  }
+
+  generateRestoreTree(restoreData: IOutput) {
     this.treeListNode = new TreeNode()
     this.treeListNode.gnerateRestoreNode(restoreData)
   }
 
-  gnerateTreeNode(treeData: INodeData<T>) {
+  generateTreeNode(treeData: INodeData<T>) {
     if (!treeData) {
       throw new Error(makeErrorMsg(ERROR_TYPE.INIT_TREE_NO_DATA))
     }
@@ -55,6 +109,7 @@ class TreeManager<T> {
     }
     if (target.checkChildType(node.type)) {
       target.insertChildNode(index, node)
+      this.callDeps()
     }
   }
 
@@ -92,6 +147,26 @@ class TreeManager<T> {
       }
     }
     recursionFun(data, callback)
+  }
+
+  traverseBack(data: TreeNode, inital, callback: Function){
+    const recursionFun = function(data, prev, callback) {
+      if (Array.isArray(data)) {
+        data.forEach((node, index) => {
+          prev[index] = {}
+          const res = callback(node, prev[index])
+          if (node.children && node.children.length) {
+            recursionFun(node.children, res, callback)
+          }
+        })
+      } else if (data instanceof Object) {
+        const res = callback(data, prev)
+        if (data.children && data.children.length) {
+          recursionFun(data.children, res, callback)
+        }
+      }
+    }
+    recursionFun(data, inital, callback)
   }
 
   outputNode(): IOutput {
