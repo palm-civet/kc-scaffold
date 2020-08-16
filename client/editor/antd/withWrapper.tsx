@@ -12,6 +12,7 @@ export interface IWrapperProps {
   name: string
   categroy: ComponentTypes,
   id?: string,
+  componentName: string,
   moveComponent: (hoverId, currentId) => {}
 }
 
@@ -19,7 +20,8 @@ export interface IDragItem {
   name: string
   categroy: ComponentTypes,
   type: string,
-  id?: string
+  id?: string,
+  componentName: string
 }
 
 export function withWrapper (Component, options: WrapperOptions): React.FC {
@@ -66,7 +68,11 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
       accept: 'dragger', // item type
       options: {},
       drop: (item: any, monitor: any) => {
-
+        // if(!dragId) {
+        //   const name = item.componentName
+        //   const component = SchemaComponent[name]
+        //   insertComponent(component, hoverId)
+        // }
       },
       hover: (item: IDragItem, monitor: any) => {
 
@@ -87,27 +93,31 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
         const hoverOverX = hoverBoundingRect.x + hoverBoundingRect.width;
         const hoverOverY = hoverBoundingRect.y + hoverBoundingRect.height;
 
-        if (!dragId) {
-          debugger
+        if(!dragId) {
+          console.log(item)
           const name = item.componentName
           const component = SchemaComponent[name]
+          insertComponent(component, hoverId)
+          
+        } else if (dragId) {
+          insertComponent(dragId, hoverId)
         }
-
+        console.log(clientOffset.y, hoverOverY)
         // 拖拽移动x,y坐标大于hover元素坐标DOM位置+自身高宽时，交换
         if (clientOffset.y >= hoverOverY - 20) {
           swapComponent(dragId, hoverId)
         }
 
         // 拖拽移动x,y坐标进入到容器组件时，移动到内部
-        if(canDrop) {
+        if(dragId && canDrop) {
           console.log('canDrop')
           moveComponent(dragId, hoverId)
         }
 
       },
       canDrop: (item: IDragItem) =>{
-        const { categroy, name } = props;
-        return containable({ categroy , name }, { categroy: item.categroy , name: item.name })
+        const { categroy, componentName } = props;
+        return containable({ categroy , name: componentName }, { categroy: item.categroy , name: item.componentName })
       },
       collect: (monitor) => ({
         isOver: monitor.isOver(),
@@ -138,6 +148,20 @@ export function withWrapper (Component, options: WrapperOptions): React.FC {
       props.moveComponent(dragId, hoverId)
     }
 
+    const insertComponent = (dragNode, hoverId) => {
+      let parentNodeChildren = null
+      const hoverNode = treeManager.findNode(hoverId)
+      if (!canDrop) {
+        parentNodeChildren = treeManager.findNode(hoverId.parent).children
+        const hoverIndex = parentNodeChildren.indexOf(hoverNode)
+        treeManager.insertNode(hoverNode.parent, dragNode, hoverIndex)
+        parentNodeChildren.children?.splice(hoverIndex, 0, dragNode)
+      } else {
+        treeManager.insertNode(hoverId, dragNode)
+      }
+      console.log("insertComponent")
+      props.moveComponent(hoverId, hoverId)
+    }
 
     return <Component className={`drag-${props.id}`}>{props.children}</Component>
     // props.categroy === ComponentTypes.Output || props.categroy === ComponentTypes.Meta ? (

@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Header><Toolbar /></Header>
       <Layout>
         <Sider theme="dark"><Components /></Sider>
-        <Content><Drawer /></Content>
+        <Content className={styles.drawer}><Drawer /></Content>
         <Sider theme="dark"><Tree /></Sider>
       </Layout>
     </Layout>

@@ -58,9 +58,9 @@ const Drawer: React.FC = () => {
   }
 
   return (
-      <Dropper dropEvent={dropEvent}>
+      <>
         {renderFun(treeList)}
-      </Dropper>
+      </>
   )
 }
 

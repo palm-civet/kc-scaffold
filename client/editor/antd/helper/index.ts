@@ -64,7 +64,7 @@ const CATEGROY_LIST = [
 export function sortCategroyName (cateA, cateB) {
   const indexA = CATEGROY_LIST.indexOf(cateA) === -1 ? 10 : CATEGROY_LIST.indexOf(cateA)
   const indexB = CATEGROY_LIST.indexOf(cateB) === -1 ? 10 : CATEGROY_LIST.indexOf(cateB)
-  return indexA < indexB ? -1 : 1 
+  return indexA < indexB ? -1 : 1
 }
 
 export enum AVAILABLE_PROPS {
