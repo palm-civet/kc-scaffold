@@ -298,6 +298,7 @@ export default {
 		}
 	},
 	"name": "Select",
+	"title": "选择器",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

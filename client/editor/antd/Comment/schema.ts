@@ -39,6 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Comment",
+	"title": "评论",
 	"deprecated": true,
 	"degrade": false
 }

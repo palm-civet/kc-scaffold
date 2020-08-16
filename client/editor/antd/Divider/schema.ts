@@ -39,6 +39,7 @@ export default {
 	},
 	"events": {},
 	"name": "Divider",
+	"title": "分割线",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

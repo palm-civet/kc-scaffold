@@ -45,6 +45,7 @@ export default {
 	},
 	"events": {},
 	"name": "Carousel",
+	"title": "走马灯",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

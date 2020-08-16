@@ -94,6 +94,7 @@ export default {
 		}
 	},
 	"name": "Input",
+	"title": "输入框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

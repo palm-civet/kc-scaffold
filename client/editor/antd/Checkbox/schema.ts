@@ -40,6 +40,7 @@ export default {
 		}
 	},
 	"name": "Checkbox",
+	"title": "多选框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

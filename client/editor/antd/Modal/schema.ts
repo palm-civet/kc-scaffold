@@ -166,6 +166,7 @@ export default {
 		}
 	},
 	"name": "Modal",
+	"title": "对话框",
 	"categroy": "Page",
 	"deprecated": false,
 	"degrade": true

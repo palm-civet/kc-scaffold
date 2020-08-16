@@ -29,7 +29,6 @@ export interface IComponentSchema {
   events: { [ key: string ]: ISchemaEvent }
   categroy?: ComponentTypes
   name: string
-  title: string
   deprecated: boolean
   degrade: boolean
 }

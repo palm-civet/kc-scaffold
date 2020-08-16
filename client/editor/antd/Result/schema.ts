@@ -33,6 +33,7 @@ export default {
 	},
 	"events": {},
 	"name": "Result",
+	"title": "结果",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

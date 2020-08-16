@@ -106,6 +106,7 @@ export default {
 		}
 	},
 	"name": "Mentions",
+	"title": "提及",
 	"deprecated": true,
 	"degrade": false
 }

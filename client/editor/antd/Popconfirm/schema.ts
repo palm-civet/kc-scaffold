@@ -64,6 +64,7 @@ export default {
 		}
 	},
 	"name": "Popconfirm",
+	"title": "气泡确认框",
 	"deprecated": true,
 	"degrade": false
 }

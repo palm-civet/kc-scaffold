@@ -130,6 +130,7 @@ export default {
 		}
 	},
 	"name": "AutoComplete",
+	"title": "自动完成",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

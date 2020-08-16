@@ -124,6 +124,7 @@ export default {
 		}
 	},
 	"name": "Form",
+	"title": "表单",
 	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false

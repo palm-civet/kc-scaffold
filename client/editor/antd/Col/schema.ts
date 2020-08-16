@@ -75,6 +75,7 @@ export default {
 	},
 	"events": {},
 	"name": "Col",
+	"title": "列容器",
 	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false

@@ -21,6 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Space",
+	"title": "间距",
 	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false

@@ -118,6 +118,7 @@ export default {
 		}
 	},
 	"name": "Pagination",
+	"title": "分页",
 	"deprecated": true,
 	"degrade": false
 }

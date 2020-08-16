@@ -45,6 +45,7 @@ export default {
 	},
 	"events": {},
 	"name": "Descriptions",
+	"title": "描述列表",
 	"categroy": "Composite",
 	"deprecated": false,
 	"degrade": false

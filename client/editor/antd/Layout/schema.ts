@@ -21,6 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Layout",
+	"title": "布局",
 	"categroy": "Layout",
 	"deprecated": false,
 	"degrade": false

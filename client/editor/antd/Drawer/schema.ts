@@ -154,6 +154,7 @@ export default {
 		}
 	},
 	"name": "Drawer",
+	"title": "抽屉",
 	"deprecated": true,
 	"degrade": false
 }

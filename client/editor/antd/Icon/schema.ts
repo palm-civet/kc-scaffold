@@ -33,6 +33,7 @@ export default {
 	},
 	"events": {},
 	"name": "Icon",
+	"title": "图标",
 	"categroy": "Text",
 	"deprecated": false,
 	"degrade": false

@@ -64,6 +64,7 @@ export default {
 		}
 	},
 	"name": "Anchor",
+	"title": "锚点",
 	"deprecated": true,
 	"degrade": false
 }

@@ -106,6 +106,7 @@ export default {
 		}
 	},
 	"name": "Card",
+	"title": "卡片",
 	"categroy": "Container",
 	"deprecated": false,
 	"degrade": false

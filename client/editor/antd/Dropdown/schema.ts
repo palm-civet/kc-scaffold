@@ -64,6 +64,7 @@ export default {
 		}
 	},
 	"name": "Dropdown",
+	"title": "下拉菜单",
 	"deprecated": false,
 	"degrade": false
 }

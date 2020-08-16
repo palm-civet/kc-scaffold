@@ -166,6 +166,7 @@ export default {
 		}
 	},
 	"name": "Cascader",
+	"title": "级联选择",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

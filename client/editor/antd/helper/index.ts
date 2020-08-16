@@ -35,3 +35,18 @@ export function categroySchemas (schemas): { [categroy: string]: IComponentSchem
   }
   return res
 }
+
+const CATEGROY_NAME = {
+  [ComponentTypes.Composite]: '复合组件',
+  [ComponentTypes.Container]: '容器组件',
+  [ComponentTypes.Decoration]: '装饰组件',
+  [ComponentTypes.Layout]: '布局组件',
+  [ComponentTypes.Page]: '页面组件',
+  [ComponentTypes.Meta]: '元组件',
+  [ComponentTypes.Text]: '文本组件',
+  [ComponentTypes.GlobalMeta]: '全局组件',
+  [ComponentTypes.Output]: '输入组件'
+}
+export function getCategroyName (categroy: string) {
+  return CATEGROY_NAME[categroy] || '未分类'
+}

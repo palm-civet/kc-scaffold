@@ -64,6 +64,7 @@ export default {
 		}
 	},
 	"name": "PageHeader",
+	"title": "页头",
 	"deprecated": true,
 	"degrade": false
 }

@@ -64,6 +64,7 @@ export default {
 		}
 	},
 	"name": "Alert",
+	"title": "警告提示",
 	"categroy": "Meta",
 	"deprecated": false,
 	"degrade": false

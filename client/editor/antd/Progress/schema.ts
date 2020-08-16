@@ -57,6 +57,7 @@ export default {
 	},
 	"events": {},
 	"name": "Progress",
+	"title": "进度条",
 	"deprecated": false,
 	"degrade": false
 }

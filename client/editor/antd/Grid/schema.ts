@@ -21,6 +21,7 @@ export default {
 	},
 	"events": {},
 	"name": "Grid",
+	"title": "栅格",
 	"deprecated": false,
 	"degrade": true
 }

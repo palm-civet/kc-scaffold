@@ -226,6 +226,7 @@ export default {
 		}
 	},
 	"name": "Tree",
+	"title": "树形控件",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false

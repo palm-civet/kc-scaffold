@@ -178,6 +178,7 @@ export default {
 		}
 	},
 	"name": "TimePicker",
+	"title": "时间选择框",
 	"categroy": "Output",
 	"deprecated": false,
 	"degrade": false
